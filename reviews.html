@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews — Victor Ufuoma Studio</title>
+<meta name="description" content="What clients say about working with Victor Ufuoma Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   VICTOR UFUOMA STUDIO — Design System
+   Palette: Ink, Signal Yellow, Cobalt Blue, Paper, Pure White, Mist
+   Type: Anton (display) / Inter (body) / Space Mono (utility)
+   ============================================================ */
+
+:root{
+  --c-ink:        #131313;
+  --c-yellow:     #FFD400;
+  --c-blue:       #2541FF;
+  --c-paper:      #FAF8F2;
+  --c-white:      #FFFFFF;
+  --c-mist:       #E7E3D8;
+
+  --c-ink-soft:   #2b2b2b;
+  --c-blue-deep:  #101a8a;
+
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'Space Mono', monospace;
+
+  --maxw: 1180px;
+  --pad: clamp(20px, 5vw, 64px);
+  --radius-card: 2px;
+
+  --ease: cubic-bezier(.22,.68,.32,1);
+}
+
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: #0a0a0a;
+  color: #f0f0f0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin:0; padding:0; list-style:none; }
+h1,h2,h3,h4{ margin:0; font-family: var(--font-display); font-weight:400; text-transform:uppercase; letter-spacing:0.01em; line-height:1; }
+p{ margin:0; }
+button{ font-family: inherit; cursor:pointer; }
+
+.container{ max-width: var(--maxw); margin:0 auto; padding:0 var(--pad); }
+
+:focus-visible{
+  outline: 3px solid var(--c-blue);
+  outline-offset: 3px;
+}
+
+.skip-link{
+  position:absolute; left:-9999px; top:0;
+  background: var(--c-yellow); color: #f0f0f0;
+  padding:10px 16px; font-family: var(--font-mono); font-size:13px; z-index:999;
+}
+.skip-link:focus{ left: 10px; top:10px; }
+
+/* ---------- utility ---------- */
+.eyebrow{
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: var(--c-blue); display:inline-block; }
+
+.section{ padding: clamp(56px, 9vw, 110px) 0; }
+.section--tight{ padding: clamp(36px,6vw,64px) 0; }
+.section-head{ max-width: 640px; margin-bottom: clamp(28px,4vw,48px); }
+.section-head h2{ font-size: clamp(34px, 5.4vw, 58px); }
+.section-head p{ margin-top:14px; font-size:17px; color: #b0b0b0; }
+
+.bg-ink{ background: #1a1a1a; color: var(--c-paper); }
+.bg-yellow{ background: var(--c-yellow); color: #f0f0f0; }
+.bg-blue{ background: var(--c-blue); color: var(--c-white); }
+.bg-white{ background: #0a0a0a; }
+
+.divider{ height:1px; background: #2a2a2a; border:0; margin:0; }
+.divider--ink{ background: #1a1a1a; height:2px; }
+
+/* registration / crop mark icon */
+.regmark{ display:inline-block; flex-shrink:0; }
+.regmark--corner{ position:absolute; opacity:0.9; }
+.corner-tl{ top: clamp(14px,2vw,28px); left: var(--pad); }
+.corner-tr{ top: clamp(14px,2vw,28px); right: var(--pad); }
+
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  letter-spacing:0.06em;
+  text-transform: uppercase;
+  padding: 15px 26px;
+  border: 2px solid #FFD400;
+  background: transparent;
+  color: #f0f0f0;
+  transition: transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease);
+  white-space: nowrap;
+}
+.btn:hover{ transform: translate(-2px,-2px); }
+.btn-primary{ background: #1a1a1a; color: var(--c-yellow); border-color: #f0f0f0; }
+.btn-primary:hover{ background: var(--c-blue); border-color: #5B9FFF; color:#fff; }
+.btn-yellow{ background: var(--c-yellow); border-color: #f0f0f0; color: #f0f0f0; }
+.btn-on-dark{ border-color: var(--c-paper); color: var(--c-paper); }
+.btn-on-dark:hover{ background: var(--c-yellow); border-color: var(--c-yellow); color: #f0f0f0; }
+.btn-arrow{ font-size:16px; transition: transform .25s var(--ease); }
+.btn:hover .btn-arrow{ transform: translateX(3px); }
+
+/* ============== HEADER / NAV ============== */
+.site-header{
+  position: sticky; top:0; z-index: 100;
+  background: #0a0a0a;
+  border-bottom: 2px solid var(--c-ink);
+}
+.nav-wrap{
+  max-width: var(--maxw); margin:0 auto; padding: 16px var(--pad);
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.logo{
+  display:flex; align-items:center; gap:10px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: 0.01em;
+}
+.logo small{
+  display:block; font-family: var(--font-mono); font-size:10px;
+  letter-spacing:0.18em; color: #5B9FFF; margin-top:2px;
+}
+.site-nav{ display:flex; align-items:center; gap: clamp(18px,3vw,34px); }
+.site-nav > ul{ display:flex; align-items:center; gap: clamp(16px,2.6vw,30px); }
+.site-nav a{
+  font-family: var(--font-mono); font-size: 13px; letter-spacing:0.08em; text-transform:uppercase;
+  padding: 6px 2px; border-bottom: 2px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"]{ border-bottom-color: #5B9FFF; }
+.has-dropdown{ position:relative; }
+.dropdown{
+  position:absolute; top: calc(100% + 14px); left:50%; transform: translateX(-50%);
+  background: #0a0a0a; border:2px solid var(--c-ink); min-width: 220px;
+  padding: 6px; opacity:0; visibility:hidden; transform: translateX(-50%) translateY(-6px);
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+  box-shadow: 6px 6px 0 var(--c-ink);
+}
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown{ opacity:1; visibility:visible; transform: translateX(-50%) translateY(0); }
+.dropdown a{ display:block; padding:10px 12px; border-bottom:0; font-size:12.5px; }
+.dropdown a:hover{ background: var(--c-yellow); }
+.dropdown li + li{ border-top:1px solid #2a2a2a; }
+
+.menu-toggle{
+  display:none; background:none; border:2px solid var(--c-ink); padding:9px 11px;
+}
+.menu-toggle span{ display:block; width:20px; height:2px; background: #1a1a1a; margin:4px 0; transition: transform .2s var(--ease), opacity .2s var(--ease); }
+
+.mobile-nav{
+  display:none; flex-direction:column;
+  background: #0a0a0a; border-bottom:2px solid var(--c-ink);
+}
+.mobile-nav.is-open{ display:flex; }
+.mobile-nav a{
+  font-family: var(--font-mono); font-size:14px; letter-spacing:0.06em; text-transform:uppercase;
+  padding: 16px var(--pad); border-top:1px solid #2a2a2a;
+}
+.mobile-nav a.sub-item{ padding-left: calc(var(--pad) + 16px); font-size:12.5px; opacity:0.85; }
+.mobile-nav a.cta-mobile{ background: var(--c-yellow); }
+
+.nav-cta-item a{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family: var(--font-mono); font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;
+  padding: 11px 18px; background: #1a1a1a; color: var(--c-yellow); border: 2px solid #FFD400;
+  border-bottom: 2px solid var(--c-ink);
+  transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+}
+.nav-cta-item a:hover{ background: var(--c-blue); border-color: #5B9FFF; color:#fff; transform: translate(-2px,-2px); }
+
+@media (max-width: 860px){
+  .site-nav{ display:none; }
+  .menu-toggle{ display:inline-flex; flex-direction:column; align-items:center; justify-content:center; }
+}
+
+/* ============== HERO ============== */
+.hero{
+  position:relative;
+  padding: clamp(70px,12vw,130px) 0 clamp(50px,8vw,90px);
+  overflow:hidden;
+}
+.hero .container{ position:relative; }
+.hero h1{
+  font-size: clamp(54px, 12vw, 132px);
+  margin: 18px 0 0;
+}
+.hero h1 .line{ display:block; }
+.hero h1 .accent{ color: #5B9FFF; }
+.hero-sub{
+  margin-top:22px; max-width: 520px;
+  font-size: clamp(16px,1.6vw,19px); color: #b0b0b0;
+}
+.hero-cta{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+.hero-tape{
+  position:absolute; right: calc(-1 * var(--pad)); top: clamp(60px,10vw,120px);
+  font-family: var(--font-mono); font-size:12px; letter-spacing:0.2em;
+  writing-mode: vertical-rl; text-transform:uppercase; color: #b0b0b0;
+}
+
+/* fade-up entrance */
+.fade-up{ opacity:0; transform: translateY(18px); animation: fadeUp .7s var(--ease) forwards; }
+.fade-up.d1{ animation-delay:.05s; } .fade-up.d2{ animation-delay:.18s; }
+.fade-up.d3{ animation-delay:.3s; } .fade-up.d4{ animation-delay:.42s; }
+@keyframes fadeUp{ to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){
+  .fade-up{ animation:none; opacity:1; transform:none; }
+  html{ scroll-behavior:auto; }
+}
+
+/* page header (non-home pages) */
+.page-head{
+  padding: clamp(54px,9vw,90px) 0 clamp(34px,6vw,54px);
+  border-bottom: 2px solid var(--c-ink);
+}
+.page-head h1{ font-size: clamp(40px,7.4vw,84px); margin-top:14px; }
+.breadcrumb{ font-family: var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.75; }
+.breadcrumb a:hover{ color: #5B9FFF; }
+.page-head p.lede{ margin-top:18px; max-width:600px; font-size:17px; }
+
+/* ============== SWATCH CARDS (signature element) ============== */
+.swatch-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2.4vw,28px); }
+.swatch-card{
+  display:flex; flex-direction:column;
+  border: 2px solid #FFD400;
+  background: #0a0a0a;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.swatch-card:hover{ transform: translateY(-6px); box-shadow: 8px 8px 0 var(--c-ink); }
+.swatch-chip{
+  aspect-ratio: 4/3; position:relative; display:flex; align-items:flex-end; padding:18px;
+  border-bottom: 2px solid var(--c-ink);
+}
+.swatch-chip .regmark{ position:absolute; top:14px; right:14px; }
+.swatch-chip .num{ font-family: var(--font-mono); font-size:13px; letter-spacing:0.08em; }
+.swatch-label{ padding: 16px 18px 20px; }
+.swatch-code{ font-family: var(--font-mono); font-size:11.5px; letter-spacing:0.1em; opacity:0.6; display:block; margin-bottom:6px; }
+.swatch-label h3{ font-size: clamp(19px,2vw,23px); }
+.swatch-label .desc{ margin-top:8px; font-size:14px; color: #b0b0b0; }
+.swatch-link{ margin-top:14px; font-family: var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; display:inline-flex; align-items:center; gap:6px; }
+.swatch-card:hover .swatch-link{ color: #5B9FFF; }
+
+@media (max-width: 860px){ .swatch-grid{ grid-template-columns: 1fr; } }
+
+/* ============== STATS ============== */
+.stat-row{ display:grid; grid-template-columns: repeat(4,1fr); gap: clamp(14px,2vw,24px); }
+.stat{ border-left:2px solid var(--c-ink); padding-left:16px; }
+.stat .num{ font-family: var(--font-display); font-size: clamp(38px,5vw,56px); color: #5B9FFF; }
+.stat .label{ font-family: var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; margin-top:6px; }
+@media (max-width: 760px){ .stat-row{ grid-template-columns: repeat(2,1fr); row-gap:28px; } }
+
+/* ============== TAGS / TOOLS ============== */
+.tag-row{ display:flex; flex-wrap:wrap; gap:10px; }
+.tag{
+  font-family: var(--font-mono); font-size:12.5px; letter-spacing:0.05em; text-transform:uppercase;
+  padding:9px 14px; border:1.5px solid var(--c-ink);
+}
+
+/* ============== PROCESS TIMELINE ============== */
+.timeline{ display:flex; flex-direction:column; }
+.tl-step{ display:grid; grid-template-columns: 70px 1fr; gap:20px; padding: 24px 0; border-top:1px solid #2a2a2a; }
+.tl-step:first-child{ border-top:2px solid var(--c-ink); }
+.tl-num{ font-family: var(--font-mono); font-size:14px; color: #5B9FFF; padding-top:3px; }
+.tl-body h4{ font-size: clamp(19px,2.2vw,25px); }
+.tl-body p{ margin-top:8px; max-width:560px; color: #b0b0b0; font-size:15px; }
+
+/* ============== GALLERY PLACEHOLDER FRAMES ============== */
+.gallery{ display:grid; grid-template-columns: repeat(3,1fr); gap: clamp(14px,2vw,22px); }
+.frame{
+  position:relative; border:2px dashed var(--c-ink); background: repeating-linear-gradient(135deg, var(--c-mist) 0 2px, transparent 2px 14px);
+  display:flex; align-items:center; justify-content:center; text-align:center; padding:18px;
+}
+.frame--portrait{ aspect-ratio: 4/5; }
+.frame--square{ aspect-ratio: 1/1; }
+.frame--story{ aspect-ratio: 9/16; }
+.frame--wide{ aspect-ratio: 16/9; }
+.frame-inner{ background: #0a0a0a; border:1px solid var(--c-ink); padding:16px; max-width:88%; }
+.frame-inner .tag-ph{ font-family: var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color: #5B9FFF; }
+.frame-inner .name{ font-family: var(--font-display); font-size:15px; margin-top:8px; }
+.frame-inner .dims{ font-family: var(--font-mono); font-size:10.5px; opacity:0.6; margin-top:6px; }
+@media (max-width: 860px){ .gallery{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px){ .gallery{ grid-template-columns: 1fr; } }
+
+/* ============== INCLUDES LIST ============== */
+.includes{ display:grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+.includes li{ display:flex; gap:12px; align-items:flex-start; font-size:15.5px; padding:12px 0; border-bottom:1px solid #2a2a2a; }
+.includes li .mark{ color: #5B9FFF; font-family: var(--font-mono); flex-shrink:0; }
+@media (max-width:700px){ .includes{ grid-template-columns:1fr; } }
+
+/* ============== TESTIMONIALS ============== */
+.review-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap: clamp(16px,2.4vw,24px); }
+.review-card{ border:2px solid var(--c-ink); background: #0a0a0a; padding: 26px 24px; display:flex; flex-direction:column; height:100%; }
+.review-card .stars{ color: var(--c-yellow); -webkit-text-stroke: 1px var(--c-ink); font-size:17px; letter-spacing:3px; }
+.review-card blockquote{ margin: 16px 0 0; font-size:16px; line-height:1.55; flex-grow:1; }
+.review-card .who{ margin-top:18px; padding-top:14px; border-top:1px solid #2a2a2a; }
+.review-card .who .name{ font-family: var(--font-mono); font-size:13px; text-transform:uppercase; letter-spacing:0.04em; }
+.review-card .who .role{ font-size:13px; color: #b0b0b0; margin-top:2px; }
+@media (max-width: 900px){ .review-grid{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px){ .review-grid{ grid-template-columns: 1fr; } }
+
+.placeholder-note{
+  font-family: var(--font-mono); font-size:12px; letter-spacing:0.04em;
+  background: var(--c-yellow); border:1.5px solid var(--c-ink); padding:10px 14px;
+  display:inline-flex; gap:8px; margin-bottom: 28px;
+}
+
+/* ============== CONTACT ============== */
+.contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: clamp(30px,5vw,64px); align-items:start; }
+.contact-item{ padding: 18px 0; border-bottom:1px solid #2a2a2a; }
+.contact-item .k{ font-family: var(--font-mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color: #5B9FFF; }
+.contact-item .v{ font-size:18px; margin-top:6px; }
+.contact-item .v.placeholder{ color: #9a9588; font-style: italic; }
+
+.form-field{ margin-bottom:20px; display:flex; flex-direction:column; gap:8px; }
+.form-field label{ font-family: var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; }
+.form-field input, .form-field textarea, .form-field select{
+  font-family: var(--font-body); font-size:15px; padding:13px 14px;
+  border: 2px solid #FFD400; background: #0a0a0a; color: #f0f0f0;
+  resize: vertical;
+}
+.form-field input:focus, .form-field textarea:focus{ outline:3px solid var(--c-blue); outline-offset:2px; }
+.form-note{ font-family: var(--font-mono); font-size:12px; margin-top:10px; opacity:0.7; }
+
+/* ============== CTA BAND ============== */
+.cta-band{ text-align:left; }
+.cta-band h2{ font-size: clamp(32px,6vw,62px); max-width: 760px; }
+.cta-band-row{ display:flex; align-items:flex-end; justify-content:space-between; gap:30px; flex-wrap:wrap; }
+
+/* ============== FOOTER ============== */
+.site-footer{ background: #1a1a1a; color: var(--c-paper); padding-top: clamp(48px,7vw,70px); }
+.footer-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; padding-bottom: 44px; }
+.footer-col h4{ font-family: var(--font-mono); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color: var(--c-yellow); margin-bottom:16px; }
+.footer-logo{ font-family: var(--font-display); font-size: 28px; }
+.footer-tag{ margin-top:12px; max-width: 320px; color: #c9c6ba; font-size:14.5px; }
+.footer-col a, .footer-col p{ display:block; padding:6px 0; font-size:14.5px; color: #d8d5ca; }
+.footer-col a:hover{ color: var(--c-yellow); }
+.footer-bottom{
+  border-top:1px solid #3a3a3a; padding: 20px 0 28px;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+}
+.footer-bottom .copy{ font-family: var(--font-mono); font-size:11.5px; color:#8f8c82; letter-spacing:0.04em; }
+.footer-bottom .marks{ display:flex; gap:10px; color: var(--c-yellow); }
+
+.footer-col p a{ color: #FFD400; text-decoration: none; border-bottom: 1px solid #FFD400; transition: all .25s var(--ease); }
+.footer-col p a:hover{ color: #5B9FFF; border-bottom-color: #5B9FFF; }
+
+@media (max-width: 760px){ .footer-grid{ grid-template-columns: 1fr; } }
+
+/* ============== REAL IMAGE GALLERY CARDS ============== */
+.gallery-item{ margin:0; display:flex; flex-direction:column; gap:10px; }
+.frame--filled{
+  border: 2px solid #FFD400; background:none; padding:0; overflow:hidden;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.frame--filled img{ width:100%; height:100%; object-fit:cover; display:block; }
+.gallery-item:hover .frame--filled{ transform: translateY(-5px); box-shadow: 7px 7px 0 var(--c-ink); }
+.gallery-caption{
+  font-family: var(--font-mono); font-size:12px; letter-spacing:0.03em;
+  color: #b0b0b0; text-align:center;
+}
+
+/* ============== SCROLL REVEAL TRANSITIONS ============== */
+.reveal{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.in-view{ opacity: 1; transform: none; }
+
+.reveal-stagger > *{
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal-stagger.in-view > *{ opacity: 1; transform: none; }
+.reveal-stagger.in-view > *:nth-child(1){ transition-delay: .04s; }
+.reveal-stagger.in-view > *:nth-child(2){ transition-delay: .11s; }
+.reveal-stagger.in-view > *:nth-child(3){ transition-delay: .18s; }
+.reveal-stagger.in-view > *:nth-child(4){ transition-delay: .25s; }
+.reveal-stagger.in-view > *:nth-child(5){ transition-delay: .32s; }
+.reveal-stagger.in-view > *:nth-child(6){ transition-delay: .39s; }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-stagger > *{ opacity:1 !important; transform:none !important; transition:none !important; }
+}
+
+/* responsive type guard for headings on very small screens */
+@media (max-width: 380px){ .hero h1{ font-size: 46px; } }
+
+</style>
+</head>
+<body>
+
+<noscript><style>.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important;}</style></noscript>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo">
+      <svg class="regmark" width="22" height="22" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="0" x2="10" y2="20" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span>VICTOR UFUOMA<small>GRAPHIC DESIGN STUDIO</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="works.html">Works</a>
+          <div class="dropdown">
+            <ul>
+              <li><a href="works.html">All Works</a></li>
+              <li><a href="work-business-flyer.html">Business Flyer</a></li>
+              <li><a href="work-social-media.html">Social Media Design</a></li>
+              <li><a href="work-youtube-thumbnail.html">YouTube Thumbnail</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="reviews.html" aria-current="page">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta-item"><a href="contact.html">Start a Project</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="works.html">Works</a>
+    <a href="work-business-flyer.html" class="sub-item">— Business Flyer</a>
+    <a href="work-social-media.html" class="sub-item">— Social Media Design</a>
+    <a href="work-youtube-thumbnail.html" class="sub-item">— YouTube Thumbnail</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html" class="cta-mobile">Start a Project →</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="container">
+      <span class="breadcrumb fade-up d1"><a href="index.html">Home</a> / Reviews</span>
+      <h1 class="fade-up d2">Client Reviews</h1>
+      <p class="lede fade-up d3">A handful of words from people who've sent over a rough idea and gotten
+        back a finished design.</p>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="container">
+      <span class="placeholder-note">⚠ Placeholder reviews below — swap in real client quotes (with their permission) once you have them.</span>
+
+      <div class="review-grid reveal-stagger">
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"Sent over a rough idea on a Monday, had a flyer our customers were
+            sharing by Wednesday. Exactly the energy our launch needed."</blockquote>
+          <div class="who">
+            <div class="name">Amaka O.</div>
+            <div class="role">Small Business Owner</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"My thumbnails finally look like they belong to the same channel. Click-through
+            went up the same week we switched."</blockquote>
+          <div class="who">
+            <div class="name">Tunde K.</div>
+            <div class="role">YouTube Creator</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"Our Instagram page actually looks like a brand now instead of five
+            different people posting whatever. Customers noticed before we even told them."</blockquote>
+          <div class="who">
+            <div class="name">Chiamaka B.</div>
+            <div class="role">Boutique Owner</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"Quick turnaround, clear communication, and the flyer looked better printed
+            than it did on screen — which almost never happens."</blockquote>
+          <div class="who">
+            <div class="name">Daniel E.</div>
+            <div class="role">Event Organizer</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"Gave two rounds of feedback and both times the changes came back exactly
+            right. No back-and-forth, no guessing."</blockquote>
+          <div class="who">
+            <div class="name">Ifeoma S.</div>
+            <div class="role">Restaurant Owner</div>
+          </div>
+        </div>
+        <div class="review-card">
+          <span class="stars">★★★★★</span>
+          <blockquote>"Asked for 'something that pops' and got exactly that — a thumbnail style
+            our viewers now recognize instantly."</blockquote>
+          <div class="who">
+            <div class="name">Kelechi N.</div>
+            <div class="role">Podcast Host</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal cta-band bg-yellow">
+    <div class="container cta-band-row">
+      <h2>Want to be the<br>next review on this page?</h2>
+      <a href="https://wa.me/message/Y3NWBD3H3QB7G1" target="_blank" class="btn btn-primary">Start a Project <span class="btn-arrow">→</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">VICTOR UFUOMA</div>
+      <p class="footer-tag">Graphic design studio crafting flyers, social media content and YouTube
+        thumbnails for brands that want to be noticed first and remembered after.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Sitemap</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="works.html">Works</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <p><a href="mailto:ufuomavictor290@gmail.com">Email</a> — ufuomavictor290@gmail.com</p>
+      <p><a href="https://www.instagram.com/victorufuoma0?igsh=ODJ5OGplYzIwejBk" target="_blank">Instagram</a> — @victorufuoma0</p>
+      <p><a href="https://wa.me/message/Y3NWBD3H3QB7G1" target="_blank">WhatsApp</a> — Message us</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span class="copy">© 2026 Victor Ufuoma Studio. All rights reserved.</span>
+    <span class="marks">
+      <svg class="regmark" width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="10" y1="0" x2="10" y2="20" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+    </span>
+  </div>
+</footer>
+
+<script>
+// Victor Ufuoma Studio — shared site behaviour
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Mobile nav toggle
+  var toggle = document.querySelector('.menu-toggle');
+  var mobileNav = document.querySelector('.mobile-nav');
+  if (toggle && mobileNav) {
+    toggle.addEventListener('click', function () {
+      var isOpen = mobileNav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  // Mobile sub-menu (Works) expand
+  var subToggle = document.querySelector('.mobile-nav .sub-toggle');
+  var subList = document.querySelector('.mobile-nav .sub');
+  if (subToggle && subList) {
+    subToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      subList.style.display = subList.style.display === 'block' ? 'none' : 'block';
+    });
+  }
+
+  // Contact form -> mailto (front-end only, no backend attached)
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = encodeURIComponent(document.getElementById('cf-name').value || '');
+      var email = document.getElementById('cf-email').value || '';
+      var project = encodeURIComponent(document.getElementById('cf-project').value || '');
+      var message = encodeURIComponent(document.getElementById('cf-message').value || '');
+      var subject = encodeURIComponent('New project enquiry from ' + decodeURIComponent(name || 'website visitor'));
+      var body = 'Name: ' + decodeURIComponent(name) +
+        '\nEmail: ' + email +
+        '\nProject type: ' + decodeURIComponent(project) +
+        '\n\nMessage:\n' + decodeURIComponent(message);
+
+      // NOTE: replace REPLACE_WITH_EMAIL in this file's mailto target via contact.html data attribute
+      var target = form.getAttribute('data-mailto') || 'hello@example.com';
+      window.location.href = 'mailto:' + target + '?subject=' + subject + '&body=' + encodeURIComponent(body);
+    });
+  }
+
+  // Scroll-triggered section transitions
+  var revealTargets = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (revealTargets.length) {
+    if ('IntersectionObserver' in window) {
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+      revealTargets.forEach(function (el) { revealObserver.observe(el); });
+    } else {
+      revealTargets.forEach(function (el) { el.classList.add('in-view'); });
+    }
+  }
+});
+
+</script>
+</body>
+</html>
